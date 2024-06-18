@@ -4,12 +4,12 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 // Serve static files from the 'dist' directory
-app.use(express.static(path.join(__dirname, 'dist')));
+app.use(express.static(path.join(__dirname, 'public')));
 
 // Catch-all route for serving index.html (entry point of your Vue.js app)
 // This handles all routes on the client-side (SPA behavior)
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'dist', 'index.html'));
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
 // Listen on the specified port
