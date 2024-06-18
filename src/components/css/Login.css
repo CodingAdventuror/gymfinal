@@ -1,0 +1,166 @@
+body
+{
+    background-color: #0e0e0e;
+}
+p
+{
+    color: black;
+}
+.login-box {
+  margin-left: auto;
+  margin-top: 1%;
+  margin-right: auto;
+  width: 600px; /* Adjust the width as needed */
+  height: 500px; /* Set the same value as width to make it a square box */
+  border-width: 2px;
+  border-color: #1a145d;
+  border-style: solid; /* Specify the border style */
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column; /* Change the flex direction to column */
+  justify-content: space-around; /* Adjust as needed */
+  align-items: center;
+  background-color: #ffffff;
+}
+.X{
+  margin-bottom: -70px;
+  margin-top: -20px;
+  position: relative;
+  right: 45.5%;
+  top: -3.5%;
+}
+.X button
+{
+  border:none;
+  background-color: white;
+  cursor: pointer;
+}
+.Tit2 p
+{
+    font-size: 25px;
+    color: #140c62;
+    position: relative;
+    right: 30%;
+    font-weight: bold;
+    margin-bottom: 0px;
+    margin-top: -20px;
+}
+.description 
+{
+    position: relative;
+    right: 23.8%;
+    margin-bottom: -65px;
+    margin-top: -74px;
+}
+.description p{
+  font-size: 13.5px;
+    color: #140c62;
+    position: relative;
+    font-weight: bold;
+    margin-bottom: -50px;
+    margin-top: -10px;
+}
+
+
+.login-box input
+{
+    width: 430px;
+    height: 40px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: -30px;
+    border: 2px solid #727272cb;
+    border-radius: 5px;
+    text-indent: 10px;
+    color: #000000cb;
+    font-size: 16px;
+    padding-top: 13px;
+    margin-top: 10px;
+    margin-bottom: -10px;
+}
+
+.input-wrapper-s {
+    position: relative;
+    margin-bottom: -50px;
+    margin-top: -20px;
+  }
+  
+.input-label2 {
+  position: absolute;
+  font-weight: bold;
+  left: 13.8px;
+  top: 32px;
+  transition: top 0.2s, font-size 0.2s, color 0.2s;
+  color:#242424a9
+  }
+  
+.active2 {
+  top: 20px;
+  font-size: 12px;
+  color:#251e6e
+}
+.login-b
+{
+    width: 430px;
+    height: 55px;
+    border-radius: 25px;
+    background-color: #7e7e7e;
+    color:azure;
+    font-size: 18px;
+    border: none;
+    position: relative;
+    
+}
+.active-button{
+  background-color: #0b0648;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 600px) {
+body{
+  background-color: white;
+}
+  .register {
+    width: 100%;
+    border: none;
+  }
+  
+  .register input {
+    width: 90%; /* Adjust the width as needed for smaller screens */
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 14px; /* Adjust font size for smaller screens */
+    padding-top: 10px; /* Adjust padding for smaller screens */
+    height: 40px;
+  }
+  .Tit1 p
+{
+    font-size: 25px;
+    color: #140c62;
+    position: relative;
+    margin-left: -75%;
+}
+  .input-wrapper {
+    width: 100%;
+  }
+  .input-label {
+    position: absolute;
+    left: 7%;
+    top: 30px;
+    transition: top 0.3s, font-size 0.3s;
+    color:#251e6ea9
+  }
+  
+.active {
+  top: 20px;
+  font-size: 12px;
+  color:#251e6e
+}
+.signup-b
+{
+  position: absolute;
+  bottom: 4%;
+  width:90%
+}
+}

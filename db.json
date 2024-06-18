@@ -1,0 +1,71 @@
+{
+  "posts": [
+    {
+      "id": "119b",
+      "name": "123",
+      "email": "123@gmail.com",
+      "password": "fabiogay"
+    },
+    {
+      "id": "113b",
+      "name": "123",
+      "email": "1243@gmail.com",
+      "password": "fabiogay"
+    },
+    {
+      "id": "2",
+      "user_id": "2",
+      "friend-id": "2"
+    },
+    {
+      "id": "7108",
+      "name": "Elias",
+      "email": "eliasmoukarzel12@gmail.com",
+      "password": "Elias@2005"
+    },
+    {
+      "id": "5c24",
+      "name": "fabs",
+      "email": "fabio123@sex.com",
+      "password": "Elias@123'"
+    },
+    {
+      "id": "c933",
+      "name": "charbel",
+      "email": "charbel123@gmail.com",
+      "password": "Samer"
+    }
+  ],
+  "comments": [
+    {
+      "id": "1",
+      "text": "a comment about post 1",
+      "postId": "1"
+    },
+    {
+      "id": "2",
+      "text": "another comment about post 1",
+      "postId": "1"
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  },
+  "friends": [
+    {
+      "id": "1",
+      "user_id": "1",
+      "friend_id": "1"
+    },
+    {
+      "id": "4366",
+      "user_id": "7108",
+      "friend_id": "113b"
+    },
+    {
+      "id": "0efc",
+      "user_id": "7108",
+      "friend_id": "119b"
+    }
+  ]
+}
