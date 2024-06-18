@@ -1,6 +1,13 @@
 <template>
   <!-- npx json-server db.json lal json serv
-        npm run serve for project serve -->
+        npm run serve for project serve
+        _____________________
+
+        New :
+        npm run json-server
+        npm run build
+        npm start
+        -->
   <div>
     <router-link to="/">Go to home</router-link>
     <div v-if="StepCount === 1" class="register-s" :class="{ 'register-s2': canSignUp }">
