@@ -14,6 +14,7 @@
           <input type="text" v-model="email" @focus="handleEmailFocus" @blur="handleEmailBlur" class="name-i" />
         </div>
         <div class="input-wrapper-s">
+
             <label class="input-label2" :class="{ 'active2': isPasswordFocused }">Password</label>
             <input type="password" v-model="password" @focus="handlePasswordFocus" @blur="handlePasswordBlur" class="email-i" />
         </div>
@@ -64,7 +65,7 @@ export default{
         if (!this.isEmpty)
         {
         let result = await axios.get(
-          `http://localhost:3000/posts?email=${this.email}&password=${this.password}`
+          `http://localhost:3001/posts?email=${this.email}&password=${this.password}`
           );
           if(result.status==200 && result.data.length>0)
           {

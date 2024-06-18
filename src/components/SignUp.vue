@@ -205,7 +205,7 @@ export default {
           password: this.password,
         };
 
-        let result = await axios.post('http://localhost:3000/posts', userData);
+        let result = await axios.post('http://localhost:3001/posts', userData);
 
         console.log('Response status:', result.status);
 

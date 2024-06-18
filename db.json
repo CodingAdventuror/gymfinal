@@ -34,6 +34,12 @@
       "name": "charbel",
       "email": "charbel123@gmail.com",
       "password": "Samer"
+    },
+    {
+      "id": "6d0a",
+      "name": "test",
+      "email": "test@3.co",
+      "password": "Elias@203"
     }
   ],
   "comments": [
