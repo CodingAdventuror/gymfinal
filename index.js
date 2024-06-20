@@ -1,17 +1,11 @@
-const express = require('express');
-const path = require('path');
-const app = express();
-const port = process.env.PORT || 3000;
 
-// Serve static files from the 'dist' directory
-app.use(express.static(path.join(__dirname, 'dist')));
+const jsonServer = require("json-server"); // importing json-server library
+const server = jsonServer.create();
+const router = jsonServer.router("db.json");
+const middlewares = jsonServer.defaults();
+const port = process.env.PORT || 8080; //  chose port from here like 8080, 3001
 
-// Route for serving index.html (entry point of your Vue.js app)
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'dist/index.html'));
-});
+server.use(middlewares);
+server.use(router);
 
-// Start the server
-app.listen(port, () => {
-  console.log(`App listening at http://localhost:${port}`);
-});
+server.listen(port);
