@@ -98,8 +98,9 @@
 </template>
 
 <script>
-import axios from 'axios';
+
 import { ref } from 'vue';
+import apiClient from './api.js';
 
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -204,7 +205,7 @@ export default {
         // Handle the error (e.g., show an error message to the user)
       }
     },
-    async next3() {
+   /* async next3() {
       try {
         const userData = {
           name: this.name,
@@ -227,7 +228,28 @@ export default {
       } catch (error) {
         console.error('Error in POST request:', error);
       }
+    } */
+    async next3() {
+  try {
+    const userData = {
+      name: this.name,
+      email: this.email,
+      password: this.password,
+    };
+
+    const result = await apiClient.post('/posts', userData);
+
+    if (result.status === 201) {
+      localStorage.setItem('User-info', JSON.stringify(result.data));
+      this.StepCount++;
+      this.$router.push('/');
+    } else {
+      console.error('Unexpected status code:', result.status);
     }
+  } catch (error) {
+    console.error('Error in POST request:', error);
+  }
+}
   },
   mounted() {
     let user = localStorage.getItem('User-info');
