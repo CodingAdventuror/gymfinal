@@ -100,7 +100,7 @@
 <script>
 
 import { ref } from 'vue';
-import apiClient from './api.js';
+import axios from 'axios';
 
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -231,6 +231,7 @@ export default {
     } */
     async next3() {
   try {
+    // Define the user data object
     const userData = {
       name: this.name,
       email: this.email,
@@ -238,10 +239,10 @@ export default {
     };
 
     // Make POST request to create user
-    const response = await apiClient.post('/posts', userData);
+    const response = await axios.post('https://backendtest-g6xy.onrender.com/posts', userData);
 
     // Check response status and handle accordingly
-    if (response.status === 201) {
+    if (response.status === 201 || response.status === 200) {
       // Save user info to localStorage
       localStorage.setItem('User-info', JSON.stringify(response.data));
 
@@ -257,6 +258,7 @@ export default {
     console.error('Error in POST request:', error);
   }
 }
+
 
   },
   mounted() {
