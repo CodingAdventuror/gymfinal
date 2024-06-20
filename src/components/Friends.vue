@@ -75,31 +75,38 @@ export default {
         },
 
         async addFriend(friendId) {
-            try {
-                const friendCheck = await axios.get(`http://localhost:3000/friends?user_id=${this.userId}&friend_id=${friendId}`, {
-                }); //`http://localhost:3000/posts?email=${this.email}&password=${this.password}`
+  try {
+    // Check if the friend relationship already exists
+    const friendCheck = await axios.get(`https://backendtest-g6xy.onrender.com/friends`, {
+      params: {
+        user_id: this.userId,
+        friend_id: friendId
+      }
+    });
 
-                if (friendCheck.status === 200 && friendCheck.data.length > 0) {
-                    this.isFriend = true;
-                    this.searchQuery == ''
-                    console.log("This person is already your friend.");
-                    // Optionally, you can notify the user that the person is already a friend.
-                } else {
-                    const friendsData = {
-                        user_id: this.userId,
-                        friend_id: friendId,
-                    };
+    if (friendCheck.status === 200 && friendCheck.data.length > 0) {
+      this.isFriend = true;
+      this.searchQuery = ''; // Corrected the assignment operator
+      console.log("This person is already your friend.");
+      // Optionally, you can notify the user that the person is already a friend.
+    } else {
+      // If not, create a new friend relationship
+      const friendsData = {
+        user_id: this.userId,
+        friend_id: friendId
+      };
 
-                    let adding = await axios.post('http://localhost:3000/friends', friendsData);
-                    if (adding.status === 200) {
-                        localStorage.setItem('User-info', JSON.stringify(adding.data[0]));
-                        this.searchQuery == ''
-                    }
-                }
-            } catch (error) {
-                console.error('An error occurred while adding friend:', error);
-            }
-        }
+      let adding = await axios.post('https://backendtest-g6xy.onrender.com/friends', friendsData);
+      if (adding.status === 201) { // Changed to check for 201 Created status
+        localStorage.setItem('User-info', JSON.stringify(adding.data));
+        this.searchQuery = ''; // Corrected the assignment operator
+      }
+    }
+  } catch (error) {
+    console.error('An error occurred while adding friend:', error);
+  }
+}
+
     }
 }
 </script>
