@@ -237,19 +237,27 @@ export default {
       password: this.password,
     };
 
-    const result = await apiClient.post('/posts', userData);
+    // Make POST request to create user
+    const response = await apiClient.post('/posts', userData);
 
-    if (result.status === 201) {
-      localStorage.setItem('User-info', JSON.stringify(result.data));
+    // Check response status and handle accordingly
+    if (response.status === 201) {
+      // Save user info to localStorage
+      localStorage.setItem('User-info', JSON.stringify(response.data));
+
+      // Increment StepCount and navigate to home page
       this.StepCount++;
       this.$router.push('/');
     } else {
-      console.error('Unexpected status code:', result.status);
+      // Handle unexpected status codes
+      console.error('Unexpected status code:', response.status);
     }
   } catch (error) {
+    // Handle errors from POST request
     console.error('Error in POST request:', error);
   }
 }
+
   },
   mounted() {
     let user = localStorage.getItem('User-info');
