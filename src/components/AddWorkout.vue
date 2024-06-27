@@ -24,7 +24,7 @@
   </div>
   
   <div class="button-container">
-    <button v-if:="isworkout === 1">Save Workout</button>
+    <button v-on:click="submitworkout" v-if:="isworkout === 1">Save Workout</button>
   </div>
 </template>
 
@@ -70,9 +70,8 @@ export default {
     addexercice() {
       const exercise =
       {
-
+        exercisename: this.exercisename,
         weight: this.weight,
-        exercicename: this.exercicename,
         setsnumber: this.setsnumber,
         repsnumber: this.repsnumber
       };
