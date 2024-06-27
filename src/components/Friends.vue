@@ -57,7 +57,7 @@ export default {
             this.isFriend = false; // Reset isFriend to false before performing a new search
 
             try {
-                const result = await axios.get(`http://localhost:3000/posts`, {
+                const result = await axios.get(`https://backendtest-g6xy.onrender.com/posts`, {
                     params: {
                         id: this.searchQuery,
                     }
@@ -84,7 +84,7 @@ export default {
       }
     });
 
-    if (friendCheck.status === 200 && friendCheck.data.length > 0) {
+    if ((friendCheck.status === 200 && friendCheck.data.length > 0)|| (this.userId == friendId)) {
       this.isFriend = true;
       this.searchQuery = ''; // Corrected the assignment operator
       console.log("This person is already your friend.");

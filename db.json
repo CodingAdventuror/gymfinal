@@ -79,6 +79,16 @@
       "user_id": "7108",
       "friend_id": "119b"
     }
+  ],
+  "workouts": 
+  [
+    {
+      "id":"1",
+      "userid":"2",
+      "workout" : 
+      {
+        "exercices":[]
+      }
+    }
   ]
-  
 }
