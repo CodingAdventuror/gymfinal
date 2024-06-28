@@ -1,4 +1,23 @@
-body
+
+.daily-div-container
 {
-    background-color: rgb(48, 48, 48);
+    background-color: rgb(121, 0, 142);
+    width:780px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 50px;
+    color: #333333;
+    font-size: 16px;
+}
+
+.daily-div
+{
+    background-color: #f0f0f0;
+    height:30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 10px;
+    padding-right: 10PX;
+    
 }

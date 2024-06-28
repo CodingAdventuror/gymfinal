@@ -1,13 +1,14 @@
 <template>
   <Header_temp />
   <h1>Home Page</h1>
-  
-    <div v-for="(exercise, index) in dailyworkout.exercises" :key="index" class="dynamic-div">
+    <div class="daily-div-container">
+    <div v-for="(exercise, index) in dailyworkout.exercises" :key="index" class="daily-div">
       <div>{{ exercise.exercisename }}</div>
       <div>{{ exercise.setsnumber }} sets</div>
       <div>{{ exercise.repsnumber }} reps</div>
       <div>{{ exercise.weight }} Kgs</div>
     </div>
+  </div>
 
   <!-- <router-link to="/signup">Go to Sign Up</router-link> -->
 </template>
@@ -58,7 +59,7 @@ export default {
       if (response.status === 200 && response.data.length > 0) {
         console.log("Found daily workout");
         // Use Object.assign to ensure reactivity
-        Object.assign(this.dailyworkout, response.data);
+        Object.assign(this.dailyworkout, response.data[2]);
         this.show = true;
       }
     } catch (error) {
