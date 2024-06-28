@@ -1,7 +1,7 @@
 <template>
   <Header_temp />
     <h1>Home Page</h1>
-    <router-link to="/signup">Go to Sign Up</router-link>
+    <!-- <router-link to="/signup">Go to Sign Up</router-link> -->
 </template>
 
 <script>

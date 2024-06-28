@@ -5,8 +5,9 @@
     <button class="dropbtn">Dropdown</button>
     <div class="dropdown-content">
       <a @click="exercisename = 'Barbell Bench Press'; isexercise = 1" href="#">Barbell bench press</a>
-      <a href="#">Machine chest fly</a>
-      <a href="#">Tricep skull crusher</a>
+      <a @click="exercisename = 'Machine Chest Fly'; isexercise = 1" href="#">Machine Chest Fly</a>
+      <a @click="exercisename = 'Dumbell Inclined Press'; isexercise = 1" href="#">Dumbell Inclined Press</a>
+      
     </div>
   </div>
   <div v-if:="isexercise === 1" class="workout-container">
@@ -18,11 +19,23 @@
       <p>Number of Reps </p> <input class="number-input" v-model="repsnumber">
     </div>
     <div class="sub-workout-container">
-    <p>Weight </p> <input class="number-input" v-model="weight"><div>kgs</div></div>
+      <p>Weight </p> <input class="number-input" v-model="weight">
+      <div>kgs</div>
+    </div>
     <div><a v-on:click="addexercice" href="#">Add</a>
-</div>
+    </div>
   </div>
-  
+
+
+
+  <div v-for="(exercise, index) in workout.exercises" :key="index" class="dynamic-div">
+    <div>{{ exercise.exercisename }}</div>
+    <div>{{ exercise.setsnumber }} sets</div>
+    <div>{{ exercise.repsnumber }} reps</div>
+    <div>{{ exercise.weight }}Kgs</div>
+  </div>
+
+
   <div class="button-container">
     <button v-on:click="submitworkout" v-if:="isworkout === 1">Save Workout</button>
   </div>
@@ -47,7 +60,8 @@ export default {
         userid: this.userId,
         exercises: []
 
-      }
+      },
+      showdivs : []
     }
   },
   name: 'AddWorkout',
@@ -81,6 +95,7 @@ export default {
       this.repsnumber = '';
       this.weight = '';
       this.isworkout = 1;
+      this.showdivs.push({});
     },
     async submitworkout() {
       const response = await axios.post('https://backendtest-g6xy.onrender.com/workouts', this.workout);
