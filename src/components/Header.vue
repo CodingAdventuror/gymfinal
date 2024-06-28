@@ -4,12 +4,18 @@
     <a v-on:click="addfriends"  href="#">Add friends</a>
     <a v-on:click="addworkout" href="#">Add workout</a>
     <a  v-on:click='logout' href="#">Logout</a>
+    <div>Your Id:{{ userID }}</div>
 </div>
 </template>
 <script>
 export default
 {
     name:'Header_temp',
+    data(){
+        return{
+            userID:''
+        }
+    },
     methods:
     {
         logout()
@@ -29,7 +35,8 @@ export default
         {
             this.$router.push('/workout')
         },
-    }
+    },
+    
 }
 </script>
 <style src="./css/Header.css"></style>

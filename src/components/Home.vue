@@ -7,17 +7,26 @@
 <script>
     import Header_temp from './Header.vue'
     export default{
+      data() {
+    return {
+      userId: '',
+    }
+  },
         name : 'Home_1',
         components:{
           Header_temp
         },
         mounted()
     {
-      let user = localStorage.getItem('User-info');
-      if (!user)
-      {
-        this.$router.push('/signup');
-      }
+        let user = localStorage.getItem('User-info');
+    if (!user) {
+      this.$router.push('/signup');
+    } else {
+      // Parse user object from local storage
+      const userInfo = JSON.parse(user);
+      // Set userId in component data
+      this.userId = userInfo.id;
+    }
     }
     }
 </script>
