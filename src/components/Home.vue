@@ -1,6 +1,6 @@
 <template>
   <Header_temp />
-  <h1>Home Page</h1>
+  <h2>Today's workout</h2>
     <div class="daily-div-container">
     <div v-for="(exercise, index) in dailyworkout.exercises" :key="index" class="daily-div">
       <div>{{ exercise.exercisename }}</div>
