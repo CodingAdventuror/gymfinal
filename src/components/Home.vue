@@ -1,24 +1,38 @@
 <template>
   <Header_temp />
-    <h1>Home Page</h1>
-    <!-- <router-link to="/signup">Go to Sign Up</router-link> -->
+  <h1>Home Page</h1>
+  
+    <div v-for="(exercise, index) in dailyworkout.exercises" :key="index" class="dynamic-div">
+      <div>{{ exercise.exercisename }}</div>
+      <div>{{ exercise.setsnumber }} sets</div>
+      <div>{{ exercise.repsnumber }} reps</div>
+      <div>{{ exercise.weight }} Kgs</div>
+    </div>
+
+  <!-- <router-link to="/signup">Go to Sign Up</router-link> -->
 </template>
 
 <script>
-    import Header_temp from './Header.vue'
-    export default{
-      data() {
+import Header_temp from './Header.vue'
+import axios from 'axios'
+
+export default {
+  data() {
     return {
+      show: false,
       userId: '',
+      today: '',
+      dailyworkout: {
+        exercises: []
+      }
     }
   },
-        name : 'Home_1',
-        components:{
-          Header_temp
-        },
-        mounted()
-    {
-        let user = localStorage.getItem('User-info');
+  name: 'Home_1',
+  components: {
+    Header_temp
+  },
+  async mounted() {
+    let user = localStorage.getItem('User-info');
     if (!user) {
       this.$router.push('/signup');
     } else {
@@ -27,8 +41,28 @@
       // Set userId in component data
       this.userId = userInfo.id;
     }
+
+    const today = new Date();
+    this.today = today.toLocaleDateString(); // This will format the date as per the user's locale
+
+    try {
+      const response = await axios.get(`https://backendtest-g6xy.onrender.com/workouts`, {
+        params: {
+          userid: this.userId,
+          date: this.today
+        }
+      });
+
+      if (response.status === 200 && response.data.length > 0) {
+        console.log("Found daily workout");
+        this.dailyworkout = response.data;
+        this.show = true;
+      }
+    } catch (error) {
+      console.error("Error fetching daily workout:", error);
     }
-    }
+  }
+}
 </script>
-<style src="./css/Home.css">
-</style>
+
+<style src="./css/Home.css"></style>

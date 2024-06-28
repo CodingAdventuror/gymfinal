@@ -46,27 +46,26 @@ import Header_temp from './Header.vue';
 import { ref } from 'vue';
 import axios from 'axios';
 export default {
+  
   data() {
     return {
-      userId: '',
+      userId :'',
       isexercise: ref(0),
       isworkout: ref(0),
       exercisename: '',
       setsnumber: '',
       repsnumber: '',
       weight: '',
+      today:'',
       workout:
       {
         userid: this.userId,
+        date: this.today,
         exercises: []
 
       },
       showdivs : []
     }
-  },
-  name: 'AddWorkout',
-  components: {
-    Header_temp
   },
   mounted() {
     let user = localStorage.getItem('User-info');
@@ -78,7 +77,14 @@ export default {
       // Set userId in component data
       this.userId = userInfo.id;
     }
+    const today = new Date();
+    this.today = today.toLocaleDateString(); // This will format the date as per the user's locale
   },
+  name: 'AddWorkout',
+  components: {
+    Header_temp
+  },
+  
   methods:
   {
     addexercice() {
@@ -98,6 +104,8 @@ export default {
       this.showdivs.push({});
     },
     async submitworkout() {
+      this.workout.userid = this.userId;
+      this.workout.date = this.today;
       const response = await axios.post('https://backendtest-g6xy.onrender.com/workouts', this.workout);
       if (response.status === 201 || response.status === 200) {
         alert("succesfully posted workout");
