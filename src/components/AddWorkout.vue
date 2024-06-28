@@ -1,7 +1,7 @@
 <template>
   <Header_temp />
   <h1>Add a workout</h1>
-  <div class="dropdown">
+  <div><div class="dropdown">
     <button class="dropbtn">Dropdown</button>
     <div class="dropdown-content">
       <a @click="exercisename = 'Barbell Bench Press'; isexercise = 1" href="#">Barbell bench press</a>
@@ -9,7 +9,8 @@
       <a @click="exercisename = 'Dumbell Inclined Press'; isexercise = 1" href="#">Dumbell Inclined Press</a>
       
     </div>
-  </div>
+  </div>or <input v-model="exercisename"><a @click="isexercise= 1">Push!</a>
+</div>
   <div v-if:="isexercise === 1" class="workout-container">
     <p>{{ exercisename }}</p>
     <div class="sub-workout-container">

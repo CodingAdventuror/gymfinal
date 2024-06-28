@@ -59,7 +59,7 @@ export default {
       if (response.status === 200 && response.data.length > 0) {
         console.log("Found daily workout");
         // Use Object.assign to ensure reactivity
-        Object.assign(this.dailyworkout, response.data[2]);
+        Object.assign(this.dailyworkout, response.data[0]);
         this.show = true;
       }
     } catch (error) {
